@@ -9,9 +9,16 @@ import com.entities.Dealer;
 
 //Provide necessary annotation
 @Repository
-public interface DealerRepository extends JpaRepository<Dealer, String>  {	
+public interface DealerRepository extends JpaRepository<Dealer, String> {
+
+	List<Dealer> findByLocationAndAuthorizedBrand(String location, String authorizedBrand);
+
+	//List<Dealer> findByLoactionAndAuthorizedBrand(String location, String authorizedBrand);
+
+	//List<Dealer> findByLocationAndAuthorizedBrand(String location, String authorizedBrand);
+
+	//List<Dealer> findByLocationAndAuthorizedBrand(String location, String authorizedBrand);	
 	
 	// Provide necessary methods to view dealers by location and brand and to view available laptop count dealerwise
-//	List<Dealer> findDealerByLocationAndBrand(String location, String authorizedBrand);
-	
+
 }

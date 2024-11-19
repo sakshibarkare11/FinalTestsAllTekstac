@@ -11,10 +11,12 @@ import com.entities.Laptop;
 @Repository
 public interface LaptopRepository extends JpaRepository<Laptop, String> {
 
+	List<Laptop> findByRamGreaterThanEqual(int ram);
+
+	List<Laptop> findByDealerObj_dealerId(String dealerId);
+
+	
 		// Provide necessary methods to view laptops with RAM greater than or equal to the given value and to view laptops by dealer ID
 
-	//	List<Laptop> findLaptopsByDealerId(String dealerId);
-//		List<Laptop> findByRamGreaterThanEqual(int ram);
   
-	
 }

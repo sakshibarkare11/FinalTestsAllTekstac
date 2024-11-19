@@ -27,29 +27,32 @@ public class DealerController {
     private IDealerService dealerService;
     
     // Provide necessary Annotation and fill code in the below methods
-	@PostMapping("addDealer")
+
+	@PostMapping("/addDealer")
     public ResponseEntity<Dealer> addDealer(@Valid @RequestBody Dealer dealer) {
         
-        return new ResponseEntity<Dealer>(dealerService.addDealer(dealer),HttpStatus.OK);
+        return new ResponseEntity<Dealer>(dealerService.addDealer(dealer), HttpStatus.OK);
     }
     
+
 	@PutMapping("/updateRating/{dealerId}/{rating}")
-    public ResponseEntity<Dealer> updateRating(@PathVariable String dealerId,@PathVariable  int rating) throws InvalidDealerException {
+    public ResponseEntity<Dealer> updateRating(@Valid @PathVariable String dealerId,@Valid @PathVariable  int rating) throws InvalidDealerException {
         return new ResponseEntity<Dealer>(dealerService.updateRating(dealerId, rating),HttpStatus.OK);
     }
     
+  
 	@GetMapping("/viewDealerById/{dealerId}")
-    public ResponseEntity<Dealer> viewDealerById(@PathVariable String dealerId) throws InvalidDealerException {
+    public ResponseEntity<Dealer> viewDealerById(@Valid @PathVariable String dealerId) throws InvalidDealerException {
         return new ResponseEntity<Dealer>(dealerService.viewDealerById(dealerId),HttpStatus.OK);
     }
     
-	@GetMapping("/viewDealersByLocationAndBrand/{location}/{authorizedBrand}")
-    public ResponseEntity<List<Dealer>> viewDealersByLocationAndBrand(@PathVariable String location,@PathVariable  String authorizedBrand) {
-        return new ResponseEntity<List<Dealer>>(dealerService.viewDealersByLocationAndBrand(location, authorizedBrand), HttpStatus.OK);
+   @GetMapping("/viewDealersByLocationAndBrand/{location}/{authorizedBrand}")
+    public ResponseEntity<List<Dealer>> viewDealersByLocationAndBrand(@Valid @PathVariable String location,@Valid @PathVariable  String authorizedBrand) {
+        return new ResponseEntity<List<Dealer>>(dealerService.viewDealersByLocationAndBrand(location, authorizedBrand),HttpStatus.OK);
     }
     
-	@GetMapping("/getAvailableLaptopCountDealerWise")
+   @GetMapping("/getAvailableLaptopCountDealerWise")
     public ResponseEntity<Map<String, Integer>> getAvailableLaptopCountDealerWise() {
-        return null;
+        return new ResponseEntity<Map<String,Integer>>(dealerService.getAvailableLaptopCountDealerWise(),HttpStatus.OK);
     }
 }

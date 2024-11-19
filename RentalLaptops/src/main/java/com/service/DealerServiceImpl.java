@@ -27,29 +27,24 @@ public class DealerServiceImpl implements IDealerService {
 
   
     public Dealer updateRating(String dealerId, int rating) throws InvalidDealerException {
-
+    	Dealer d = dealerRepository.findById(dealerId).orElseThrow(() -> new InvalidDealerException());
+    	d.setRating(rating);
        // fill code
-    	Dealer deal = dealerRepository.findById(dealerId).orElseThrow(()-> new InvalidDealerException());
-    	deal.setRating(rating);
-	    return dealerRepository.save(deal);
-	    //correct
+	    return dealerRepository.save(d);
     }
 
  
     public Dealer viewDealerById(String dealerId) throws InvalidDealerException {
-       
+       Dealer dealer=dealerRepository.findById(dealerId).orElseThrow(() -> new InvalidDealerException());
 	// fill code
-	    return dealerRepository.findById(dealerId).orElseThrow(()-> new InvalidDealerException());
-//    	return null;
-	    //correct
+	    return dealer;
     }
 
     
     public List<Dealer> viewDealersByLocationAndBrand(String location, String authorizedBrand) {
         
 	// fill code
-//	    return dealerRepository.findDealerByLocationAndBrand(location, authorizedBrand);
-    	return null;
+	    return dealerRepository.findByLocationAndAuthorizedBrand(location,authorizedBrand);
     }
 
   
